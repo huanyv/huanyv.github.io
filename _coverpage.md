@@ -9,6 +9,6 @@
 - 不用构建静态htnl文件
 - 多种主题
 
-[GitHub](https://github.com/docsifyjs/docsify/)
-[Gitee](https://github.com/docsifyjs/docsify/)
-[Get Started](index.html)
+[GitHub](https://github.com)
+[Gitee](https://github.com)
+[Get Started](README)

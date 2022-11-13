@@ -1,3 +1,9 @@
-* 学习笔记
-  * [Java学习笔记](/notes/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.md)
-  * [Linux学习笔记](/notes/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.md)
+* 文档一
+	* [title1](/doc/doc1/title1.md)
+	* [title2](/doc/doc1/title2.md)
+	* [title3](/doc/doc1/title3.md)
+* 文档二
+	* [title1](/doc/doc2/title1.md)
+* 文档三
+	* [title1](/doc/doc3/title1.md)
+	* [title2](/doc/doc3/title2.md)

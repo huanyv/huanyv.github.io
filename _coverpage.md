@@ -1,13 +1,13 @@
 <!-- _coverpage.md -->
 
 
-# 这是一个封面 <small>1.0.0</small>
+# Harbour <small>1.0</small>
 
-> 业精于勤荒于嬉，行成于思毁于随.
+> 追求简约、轻量的 Web 框架
 
 - 简单，轻量级
-- 不用构建静态htnl文件
-- 多种主题
+- 注解驱动，更少配置
+- 组件式开发
 
 [GitHub](https://github.com)
 [Gitee](https://github.com)

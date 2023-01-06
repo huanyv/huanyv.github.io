@@ -9,6 +9,6 @@
 - 注解驱动，更少配置
 - 组件式开发
 
-[GitHub](https://github.com)
-[Gitee](https://github.com)
+[GitHub](https://github.com/huanyv/harbour-framework)
+[Gitee](https://gitee.com/huanyv/harbour-framework)
 [Get Started](README)

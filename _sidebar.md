@@ -16,7 +16,7 @@
 	* [SqlContext](/doc/orm/context.md)
 	* [配置](/doc/orm/config.md)
 	* [接口式编程](/doc/orm/interface.md)
-	* [SQL构造器](/doc/orm/context.md)
+	* [SQL构造器](/doc/orm/builder.md)
 * Start
 	* [原生Servlet](/doc/start/servlet.md)
 	* [打包部署](/doc/start/package.md)

@@ -4,7 +4,7 @@
 <p align="center">您可以在 <b>短时间</b> 学会它做点有趣的项目</p>
 <p align="center">
     <a href="index.html#/README?id=开始" target="_self">快速开始</a> | 
-    <a href="https://huanyv.github.io" target="_blank">官方文档</a> | 
+    <a href="https://harbour.huanyv.top" target="_blank">官方文档</a> | 
     <a href="" target="_blank">捐赠我们</a> 
 </p>
 
@@ -59,7 +59,7 @@ public class MainApplication {
     }
 }
 ```
-
+* 系统以2333做为默认端口号，没有context path，访问<http://localhost:2333/hello>
 * 如果你使用过SpringBoot的话，它与其使用方式是相同的
 * **所有的包与类都应在启动类所在的包下**，如下所示：
 

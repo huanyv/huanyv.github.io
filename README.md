@@ -4,7 +4,7 @@
 <p align="center">您可以在 <b>短时间</b> 学会它做点有趣的项目</p>
 <p align="center">
     <a href="index.html#/README?id=开始" target="_self">快速开始</a> | 
-    <a href="https://harbour.huanyv.top" target="_blank">官方文档</a> | 
+    <a href="http://harbour.huanyv.top" target="_blank">官方文档</a> | 
     <a href="" target="_blank">捐赠我们</a> 
 </p>
 
@@ -210,5 +210,6 @@ server.maxFileSize=10240000L
 * 执行`package`后，使用`java -jar xxx.jar`启动运行
 
 
+### 更多功能请看<a href="http://harbour.huanyv.top" target="_self">详细文档</a>
 
 

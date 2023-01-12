@@ -8,19 +8,36 @@
         * `<input type="file" name="file">`
 * 以下为单个文件和多个文件的接收方式
 
+```html
+<form action="/up" method="post" enctype="multipart/form-data">
+    <input type="file" name="file">
+    <br />
+    <button type="submit">上传</button>
+</form>
+```
+
 ```java
 // 单个文件
-@Post
-public ResponseResult up(@Param("fileName") Part file) {
-    Part file = req.getPart("file");
+@Post("/up")
+public ResponseResult up(@Param("file") Part file) {
     System.out.println("文件大小：" + file.getSize());
     String fileName = file.getSubmittedFileName();
     // 上传
     file.write("C:\\Users\\admin\\Desktop\\" + fileName);
 }
 
+```
+
+```html
+<form id="/up" method="POST" enctype="multipart/form-data">
+    <input id="file" type="file" name="file" multiple="multiple"/>
+    <button type="submit">upload</button>
+</form>
+```
+
+```java
 // 多个文件
-@Post
+@Post("/up")
 public ResponseResult up(List<Part> files) {
     //...
 }

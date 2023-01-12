@@ -45,7 +45,7 @@ public class WebConfig implements WebConfigurer {
 
 * `classpath:`指类路径目录
 * `file:`指系统文件路径
-* **注意**：最后要有目录绷带符号`/`或`\\`
+* **注意**：最后要有目录结束符号`/`或`\\`
 
 ```java
 @Component

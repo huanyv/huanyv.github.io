@@ -19,7 +19,7 @@ public ResponseResult listBook(@Param("bname") String bname, @Param("page") int 
 }
 ```
 
-2. 请求参数映射成对象
+2. 请求参数映射成对象，get的请求参数，表单请求参数，ajax默认的请求参数，这些请求的`Content-Type`是`application/x-www-form-urlencoded`
 
 ```java
 @Post("/login")
@@ -29,7 +29,7 @@ public String login(@Form User user) {
 }
 ```
 
-3. 请求体映射成对象，也可用String接收
+3. 请求体映射成对象，也可用String接收，请求`Content-Type`不是`application/x-www-form-urlencoded`，axios、fetch默认为`application/json`
 
 ```java
 @Post

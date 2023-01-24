@@ -1,17 +1,18 @@
 <h1 align="center">Harbour-framework</h1>
-
 <p align="center">基于<code>Java8</code>创造的轻量级、简洁优雅的Web框架 </p>
 <p align="center">您可以在 <b>短时间</b> 学会它做点有趣的项目</p>
 <p align="center">
     <a href="index.html#/README?id=开始" target="_self">快速开始</a> | 
     <a href="http://harbour.huanyv.top" target="_blank">官方文档</a> | 
-    <a href="" target="_blank">捐赠我们</a> 
+    <a href="https://github.com/huanyv/harbour-framework" target="_blank">支持我</a> 
 </p>
 
 ## 开始
 
 `Harbour` 是一个追求简约、轻量的 Web 框架，集IOC、AOP、MVC、ORM于一体，让 `JavaWeb` 开发更加轻松，在轻量与灵活性上同时兼顾。 在使用方式上提供与SpringBoot基本相同的注解和设计理念，学习转换几乎零成本 。
-如果觉得这个项目不错可以 [star](https://github.com) 支持
+如果觉得这个项目不错可以 [star](https://github.com/huanyv/harbour-framework) 支持
+
+![](static/img/struct.drawio.png)
 
 * 简洁的：框架设计简单,容易理解,不依赖于更多第三方库。
 * 优雅的：`Harbour` 支持 REST 风格路由接口, 提供lambda函数路由。

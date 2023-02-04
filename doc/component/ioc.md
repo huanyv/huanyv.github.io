@@ -66,19 +66,17 @@ public class UserController {
 }
 ```
 
-## @Scope
+## @Prototype
 
-* 有两种组件类型，多实例与单实例，由`@Scope`注解控制
-* 在标有`@component`或`@Bean`注解的类或方法上使用`@Scope`注解
+* 有两种组件类型，多实例与单实例，默认是单实例类型
+* 在标有`@component`或`@Bean`注解的类或方法上使用`@Prototype`后，Bean将是多实例的
 * 单实例：每次的组件Bean是同一个
-    * `@Scope("singleton")`或`@Scope(BeanDefinition.SCOPE_SINGLETON)`
 * 多实例：每次的Bean都会重新创建
-    * `@Scope("prototype")`或`@Scope(BeanDefinition.SCOPE_PROTOTYPE)`
 * **注意：**多实例Bean不可循环依赖，否则报`BeanCurrentlyInCreationException`异常
 
 ```java
 @Component
-@Scope(BeanDefinition.SCOPE_PROTOTYPE)
+@Prototype
 public class UserController {
 	//.......
 }
@@ -86,7 +84,7 @@ public class UserController {
 @Configuration
 public class Config {
     @Bean
-    @Scope("singleton")
+    @Prototype
     private UserDao userDao() {
         return new UserDaoImpl();
     }

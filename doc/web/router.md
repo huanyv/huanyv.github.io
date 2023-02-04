@@ -29,7 +29,7 @@ public class MainApplication {
 public class UserController implements RouteRegistry {
 
     // 依赖注入
-    @Autowired
+    @Inject
     private UserService userService;
 
     @Override
@@ -60,7 +60,7 @@ public class UserController implements RouteRegistry {
 @Route("/test") // 必须有
 public class HelloController {
 
-    @Autowired
+    @Inject
     private UserService userService;
 
     @Route("/")

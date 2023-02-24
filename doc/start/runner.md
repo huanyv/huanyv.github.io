@@ -4,12 +4,18 @@
 
 * 可以在系统启动时执行一系列操作，可以用来初始化等
 * 通过实现`AppcalitionRunner`接口，需要是一个组件
-* `@Order`注解为多个启动任务时，用来排序，数字越小先执行，默认是0
+* `getOrder()`方法为多个启动任务时，用来排序，数字越小先执行，默认是0
 
 ```java
 @Component
 @Order(0)
 public class Runner implements ApplicationRunner {
+
+    @Override
+    public int getOrder() {
+        return 0;
+    }
+
     @Override
     public void run(AppArguments appArguments) {
         System.out.println("应用启动了");

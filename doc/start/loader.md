@@ -5,14 +5,14 @@
     * 不了解SPI机制的请看：[Java之SPI机制](https://www.cnblogs.com/googlemeoften/p/5715262.html)
 * 当使用`ApplicationLoader`的SPI机制后，应用启动时会执行以下步骤
     1. 加载所有的`ApplicationLoader`的实现类
-    2. 依照实现类上的`@Order`注解排序
-    3. 根据`@ConfigurationProperties`的配置前缀，将`AppArguments`的属性注入到Loader中对应同名属性
-    4. 遍历Loader中的方法，根据`@Condidtion`条件是否注入
-    5. 执行Loader的`load()`方法
+    2. 依照`getOrder()`方法排序
+    3. 根据`@Properties`的配置前缀，将`AppArguments`的属性注入到Loader中对应同名属性
+    4. 执行Loader的`load()`方法
+    5. 遍历Loader中的方法，根据`@Condidtion`条件是否注入
 
 
 ```java
-@ConfigurationProperties(prefix = "harbour.view")
+@Properties(prefix = "harbour.view.")
 public class EnjoyViewResolverStartLoader implements ApplicationLoader {
 
     private String prefix = "templates/";

@@ -153,11 +153,11 @@ public class UserController implements RouteRegistry {
 * 在`resources`下创建名为`application.properties`的文件
 * 那么这个文件中应该写什么呢？
     * 你要的配置应该是`ApplicationLoader`接口实现类，对应的属性
-    * 由`@ConfigurationProperties`注解的`prefix`属性值+`.`+属性名为配置项
+    * 由`@Properties`注解的`prefix`属性值+属性名为配置项
     * 比如下面这个类，这个是内嵌`Tomcat`的自动加载类
 
 ```java
-@ConfigurationProperties(prefix = "server")
+@Properties(prefix = "server.")
 public class TomcatStartLoader implements ApplicationLoader {
 
     private long maxFileSize = 1048576;

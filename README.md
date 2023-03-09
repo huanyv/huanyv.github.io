@@ -211,6 +211,6 @@ server.maxFileSize=10240000L
 * 执行`package`后，使用`java -jar xxx.jar`启动运行
 
 
-### 更多功能请看<a href="http://harbour.huanyv.top" target="_self">详细文档</a>
+### 更多功能请看<a href="https://huanyv.github.io" target="_self">详细文档</a>
 
 

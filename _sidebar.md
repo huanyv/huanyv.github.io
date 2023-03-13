@@ -27,4 +27,5 @@
 	* [原生Servlet](/doc/start/servlet.md)
 	* [ApplicationLoader](/doc/start/loader.md)
 	* [启动任务与定时器](/doc/start/runner.md)
+	* [日志配置](/doc/start/logger.md)
 	* [打包部署](/doc/start/package.md)

@@ -1,9 +1,8 @@
 <!-- _coverpage.md -->
 
-
 <!-- # Harbour <small>1.0</small> -->
 
-# <img src='/static/img/logo/logo-title.png' height="120px">
+# <img src='./static/img/logo/logo-title.png' height="120px">
 
 > 追求简约、轻量的 Web 框架
 

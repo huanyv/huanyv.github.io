@@ -1,0 +1,196 @@
+body {
+    background-image:url("../img/sm_background.jpg");
+    background-size:100vw 100vh;
+    background-attachment:fixed;
+    background-repeat: no-repeat;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+#box {
+    width: 90vw;
+    height:87vh;
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+}
+
+#left,#content{/* 侧边栏和内容样式 */
+    background-color: rgba(255,255,255,0.1);
+    box-shadow: 0 25px 45px rgba(0,0,0,0.1);
+    border: 1px solid rgba(255,255,255,.5);
+    border-right: 1px solid rgba(255,255,255,.2);
+    border-bottom: 1px solid rgba(255,255,255,.2);
+    backdrop-filter: blur(50px);
+    -moz-backdrop-filter: blur(60px); 
+}
+#left {
+    width: 90vw;
+    height: 20vh;
+    position: absolute;
+    top:0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+#content{
+    width: 90vw;
+    height: 66.2vh;
+    position: absolute;
+    bottom:0;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+#footer{/*页脚*/
+    text-align: center;
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+    color:rgb(187, 187, 187); 
+    text-decoration: none;
+}
+#footer>a{
+    color:rgb(187, 187, 187);
+}
+
+#head {/*头像*/
+    display: inline-block;
+    width: 20vmin;
+    height: 20vmin;
+    border: 1vmin solid rgba(128, 128, 128,0.3) ;
+    border-radius: 50%;
+    position: absolute;
+    top: 5vmin;
+    left: 5vmin;
+    overflow: hidden;
+}
+#head>img {
+    width: 100%
+}
+
+#name {/* 名字 */
+    display: block;
+    width: 22vmin;
+    text-align: center;
+    position: absolute;
+    left: 5vmin;
+    top: 27vmin;
+    color: rgba(255,255,255,0.7);
+}
+
+#menu{/* 侧边栏菜单 */
+    position: absolute;
+    height: 100%;
+    left: 35vw;
+    
+    display: flex;
+    flex-wrap:wrap;
+    align-items: center;
+
+    list-style: none;
+    font-size: 20px;
+    color:rgba(222,222,222,0.9);
+    cursor: pointer;
+    -webkit-tap-highlight-color:rgba(0,0,0,0);/*去除手机点击出现阴影*/
+    user-select: none;
+}
+#menu>li {
+    margin: 15px;
+}
+
+#blog{
+    /* position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 20px;
+    text-align: center;
+    text-decoration: none;
+    color: rgba(238, 238, 238,0.8); */
+    display: none;
+}
+
+
+#home,#notes,#about {/*  内容页大小、位置  */
+    position: absolute;
+    width: 90vw;
+    height: 70vh;
+}
+.title {/*每页标题*/
+    color: rgba(238, 238, 238,0.8);
+    text-align: center;
+    user-select: none;
+}
+
+
+#subtitle,.typed-cursor{/* 打字机 */
+    color: rgba(238, 238, 238,0.8);
+}
+#typed{/*打字机位置*/
+    position: absolute;
+    top: 200px;
+    left: 20px;
+    right: 20px;
+    text-align: center;
+}
+
+
+
+.list>li{
+    line-height: 4vh;
+}
+.list a{
+    color: rgba(238, 238, 238,0.8);
+    line-height: 2vh;
+}
+.list a:hover{
+    text-decoration: none;
+    color: aliceblue;
+    font-size: 20px;
+    line-height: 6vh;
+}
+.list span{
+    color: darkgrey;
+    font-size: 12px;
+}
+.list {
+    list-style: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+#next,#last{
+    position: absolute;
+    width: 15vw;
+}
+.list,#next,#last {
+    height: 40vh;
+    top: 15vh;
+}
+
+#next{
+    right: 0;
+    display: flex;
+    align-items: center;
+    user-select: none;
+}
+#last{
+    left: 0;
+    display: flex;
+    align-items: center;
+    user-select: none;
+    z-index: 1;
+}
+#next>img,#last>img{
+    width: 10vw;
+    margin: auto;
+}
+

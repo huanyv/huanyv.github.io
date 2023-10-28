@@ -867,7 +867,7 @@ world
 
 ### 二维数组
 
-* 语法 `int[][] array = new int[2][3]; `或`int[][] array = {{1, 2, 3},{4,5,6},{7,8,9}};`
+* 语法 `int[][] array = new int[2][3]; `
 * 二维数组是一种特殊的一维数组(套娃数组)
 * 类型定义无所谓方括号位置`int[][] array`、`int[] array[]`、`int array[][]`
 * new出的对象一定要有行，可以没有列`int[][] array = new array[2][]`

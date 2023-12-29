@@ -28,7 +28,7 @@ public interface WebConfigurer {
 * 当控制器方法没有任何操作时，仅仅用来页面跳转
 
 ```java
-@Component
+@Bean
 public class WebConfig implements WebConfigurer {
 
     @Override
@@ -48,7 +48,7 @@ public class WebConfig implements WebConfigurer {
 * **注意**：最后要有目录结束符号`/`或`\\`
 
 ```java
-@Component
+@Bean
 public class WebConfig implements WebConfigurer {
 
     @Override
@@ -62,10 +62,10 @@ public class WebConfig implements WebConfigurer {
 
 ## 路由守卫配置
 
-* 这样配置后，对应的路由守卫类不需要`@Component`注解的`@Guard`注解配置
+* 这样配置后，对应的路由守卫类不需要`@Bean`注解的`@Guard`注解配置
 
 ```java
-@Component
+@Bean
 public class WebConfig implements WebConfigurer {
 
     @Override
@@ -85,7 +85,7 @@ public class WebConfig implements WebConfigurer {
 * 如果使用以下配置，直接用`registry.addMapping("/**").defaultRule();`即可
 
 ```java
-@Component
+@Bean
 public class WebConfig implements WebConfigurer {
 
     // ...
@@ -114,7 +114,7 @@ public class WebConfig implements WebConfigurer {
 * 配置类改为继承`WebConfiguration`，调用其`super`
 
 ```java
-@Component
+@Bean
 public class WebConfig extends WebConfiguration {
 
     @Override

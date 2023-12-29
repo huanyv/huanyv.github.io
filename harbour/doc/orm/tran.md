@@ -34,7 +34,7 @@ public void testGetSqlContext() throws Exception {
 * 基于Bean模块的AOP，可以用注解实现简单事务
 
 ```java
-@Component
+@Bean
 @Aop(TransactionAop.class)
 public class BookServiceImpl implements BookService {
 

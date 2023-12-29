@@ -6,7 +6,7 @@
 * 当使用`ApplicationLoader`的SPI机制后，应用启动时会执行以下步骤
     1. 加载所有的`ApplicationLoader`的实现类
     2. 依照`getOrder()`方法排序
-    3. 根据`@Properties`的配置前缀，将`AppArguments`的属性注入到Loader中对应同名属性
+    3. 根据`@Properties`的配置前缀，将`Configuration`的属性注入到Loader中对应同名属性
     4. 执行Loader的`load()`方法
     5. 遍历Loader中的方法，根据`@Condidtion`条件是否注入
 
@@ -39,7 +39,7 @@ public class EnjoyViewResolverStartLoader implements ApplicationLoader {
     public static class ConditionOnMissingBean implements Condition {
 
         @Override
-        public boolean matchers(ApplicationContext applicationContext, AppArguments appArguments) {
+        public boolean matchers(ApplicationContext applicationContext, Configuration configuration) {
             // 不存在ViewResolver这个Bean
             return BeanFactoryUtil.isNotPresent(applicationContext, ViewResolver.class);
         }

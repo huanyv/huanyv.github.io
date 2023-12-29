@@ -10,7 +10,7 @@
 * `@ExceptionPoint`指定该方法捕获的异常，可以有多个
 
 ```java
-@Component
+@Bean
 public class ExceptionGlobalHandler implements ExceptionHandler {
 
     @ExceptionPoint({IllegalArgumentException.class, NumberFormatException.class})

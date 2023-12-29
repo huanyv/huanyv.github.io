@@ -53,8 +53,8 @@ public class MapperFactoryBean implements FactoryBean {
 
 }
 
-@Configuration
-public class Config {
+@Bean
+public class Config implements Configuration {
 
     // 注入到IOC中
     @Bean

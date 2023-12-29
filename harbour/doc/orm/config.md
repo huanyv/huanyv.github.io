@@ -62,10 +62,10 @@ jdbc.scanPackages=com.book.dao
 1. 配置多数据源
 
 ```java
-@Component
+@Bean
 public class DynamicDataSourceRunner implements ApplicationRunner {
     @Override
-    public void run(AppArguments appArguments) {
+    public void run(Configuration configuration) {
         JdbcConfigurer jdbcConfigurer = JdbcConfigurer.create();
 
         SimpleDataSource ds1 = new SimpleDataSource();

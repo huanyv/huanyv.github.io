@@ -7,7 +7,7 @@
 * `getOrder()`方法为多个启动任务时，用来排序，数字越小先执行，默认是0
 
 ```java
-@Component
+@Bean
 @Order(0)
 public class Runner implements ApplicationRunner {
 
@@ -17,7 +17,7 @@ public class Runner implements ApplicationRunner {
     }
 
     @Override
-    public void run(AppArguments appArguments) {
+    public void run(Configuration configuration) {
         System.out.println("应用启动了");
     }
 }
@@ -67,7 +67,7 @@ public interface Timer {
 ```
 
 ```java
-@Component
+@Bean
 public class TimerTask implements Timer {
 
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

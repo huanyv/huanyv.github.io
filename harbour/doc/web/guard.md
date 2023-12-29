@@ -14,7 +14,7 @@
         * `order`执行顺序
 
 ```java
-@Component
+@Bean
 @Guard(value = {"/**"}, exclude = {"/error/**", "/jquery/**", "/layui/**", "/login", "/admin/user/login", "/captcha"})
 public class LoginGuard implements NavigationGuard {
 

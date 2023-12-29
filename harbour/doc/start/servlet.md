@@ -5,9 +5,8 @@
 * 系统在启动时会将其注册
 
 ```java
-@Component
-@Configuration
-public class WebConfig extends WebConfiguration {
+@Bean
+public class WebConfig extends WebConfiguration implements Configuration {
 
     @Override
     public void addViewController(ViewControllerRegistry registry) {

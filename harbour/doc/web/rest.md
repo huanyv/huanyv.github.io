@@ -20,7 +20,7 @@
 * 如果使用的控制器类上，此类所有的方法如上
 
 ```java
-@Component
+@Bean
 @Route("/admin/book")
 @Body
 public class BookController {

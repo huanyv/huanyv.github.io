@@ -25,7 +25,7 @@ public class MainApplication {
 * 即：`/a/say`、`/a/hello`
 
 ```java
-@Component
+@Bean
 public class UserController implements RouteRegistry {
 
     // 依赖注入
@@ -56,7 +56,7 @@ public class UserController implements RouteRegistry {
 * `@Route`注册作用在方法上表明，任何请求路由，如果使用其它请求，使用对应的注册即可
 
 ```java
-@Component
+@Bean
 @Route("/test") // 必须有
 public class HelloController {
 

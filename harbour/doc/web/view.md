@@ -28,7 +28,7 @@ MVC模式的View，将模型Model的数据展示到页面上，支持两种视�
 * 也可以使用Model对象，其实是一样的
 
 ```java
-@Component
+@Bean
 @Route("/admin/user")
 public class UserController {
 

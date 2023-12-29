@@ -103,19 +103,24 @@
     <script type="text/javascript">
         var se = [{
             "title": "Baidu",
-            "url": "https://www.baidu.com/s?ie=UTF-8&wd="
+            "url": "https://www.baidu.com/s?ie=UTF-8&wd=",
+            "suffix": " -site:csdn.net -site:wenku.baidu.com"
         },{
             "title": "Bing",
-            "url": "https://cn.bing.com/search?q="
+            "url": "https://cn.bing.com/search?q=",
+            "suffix": ""
         },{
             "title": "bilibili",
-            "url": "https://search.bilibili.com/all?keyword="
+            "url": "https://search.bilibili.com/all?keyword=",
+            "suffix": ""
         },{
             "title": "CSDN",
-            "url": "https://so.csdn.net/so/search?t=blog&u=&q="
+            "url": "https://so.csdn.net/so/search?t=blog&urw=&q=",
+            "suffix": ""
         },{
             "title": "kaifa",
-            "url": "https://kaifa.baidu.com/searchPage?module=SEARCH&wd="
+            "url": "https://kaifa.baidu.com/searchPage?module=SEARCH&wd=",
+            "suffix": ""
         }]
         var index = 0;
 
@@ -134,11 +139,7 @@
             document.getElementById("input").onkeydown = function(key) {
                 if(key.keyCode == 13) { // 回车按下
                     var word = document.getElementById("input").value; //获取输入关键词
-                    if (se[index].title == 'Baidu') {
-                        window.open(se[index].url + word + " -site:csdn.net -site:wenku.baidu.com","_self"); // 跳转链接
-                    } else {
-                        window.open(se[index].url + word,"_self"); // 跳转链接
-                    }
+                    window.open(se[index].url + word + se[index].suffix,"_self"); // 跳转链接
                 }
             }
             document.getElementById("searchBtn").onclick = function() {

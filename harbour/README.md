@@ -3,7 +3,7 @@
 <p align="center">您可以在 <b>短时间</b> 学会它做点有趣的项目</p>
 <p align="center">
     <a href="index.html#/README?id=开始" target="_self">快速开始</a> | 
-    <a href="http://harbour.huanyv.top" target="_blank">官方文档</a> | 
+    <a href="https://huanyv.github.io/harbour" target="_blank">官方文档</a> | 
     <a href="https://github.com/huanyv/harbour-framework" target="_blank">支持我</a> 
 </p>
 
@@ -35,8 +35,6 @@
 ## 快速上手
 
 ### HelloWorld
-
-注意：本项目依赖了自己写的一个工具类 [java-utils](https://gitee.com/huanyv/java-utils) ，您需要先安装此工具类方可继续
 
 1. 安装依赖
 
@@ -103,12 +101,12 @@ src
 
 ### 组件托管
 
-* 组件就是一个类，声明一个组件非常简单，在类上使用`@Component`注解即可
+* 组件就是一个类，声明一个组件非常简单，在类上使用`@Bean`注解即可
 * 当在其它的类中依赖到此类时，直接使用`@Inject`就可以自动注入属性，不需要手动`new`
 * 组件被扫描到的前提是：**组件必需在启动类包或子包下**
 
 ```java
-@Component
+@Bean
 public class UserServiceImpl implements UserService {
 
 	// .....
@@ -116,7 +114,7 @@ public class UserServiceImpl implements UserService {
 }
 
 // 要想自动注入，此类也要是一个组件
-@Component
+@Bean
 public class UserController {
 
     // 不需要这样
@@ -136,7 +134,7 @@ public class UserController {
 * **此类需要是一个组件**
 
 ```java
-@Component
+@Bean
 public class UserController implements RouteRegistry {
     @Override
     public void run(Routing app) {
@@ -211,6 +209,6 @@ server.maxFileSize=10240000L
 * 执行`package`后，使用`java -jar xxx.jar`启动运行
 
 
-### 更多功能请看<a href="https://huanyv.github.io" target="_self">详细文档</a>
+### 更多功能请看<a href="https://huanyv.github.io/harbour" target="_self">详细文档</a>
 
 

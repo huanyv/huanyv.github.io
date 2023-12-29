@@ -67,7 +67,7 @@ public class LogAspect2 implements AspectAdvice {
     }
 }
 
-@Component
+@Bean
 @Aop({LogAspect.class, LogAspect2.class}) // 指定切面
 public class AdminService {
 
@@ -79,7 +79,7 @@ public class AdminService {
 }
 
 // 等效于上面
-@Component
+@Bean
 @Aop(LogAspect.class) // 指定切面
 public class AdminService {
 

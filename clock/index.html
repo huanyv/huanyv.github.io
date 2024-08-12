@@ -10,7 +10,7 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: #404040;
+            background-color: #202020;
         }
 
         #main {
@@ -22,9 +22,9 @@
 
         #clock {
             position: absolute;
-            width: auto;
+            width: 880px;
             height: 225px;
-            top: 250px;
+            top: 300px;
             left: 0;
             right: 0;
             bottom: 0;
@@ -33,27 +33,43 @@
 
         /* 大小调整 */
         .flip-clock-wrapper ul {
-            width: 150px;
+            width: 130px;
             height: 225px;
             line-height: 225px;
         }
 
+        /* 数字行高 */
         .flip-clock-wrapper ul li {
             line-height: 225px;
         }
 
+        /* 分割线 */
         .flip-clock-wrapper ul li a div.up:after {
             top: 110px;
             height: 5px;
         }
 
+        /* 背景颜色 字体颜色 */
         .flip-clock-wrapper ul li a div div.inn {
             font-size: 150px;
+            background-color: #1F1F1F;
+            color: #E3E2E7;
         }
 
+        /* 冒号 */
         .flip-clock-divider {
             top: 40px;
             height: 150px;
+        }
+        .flip-clock-dot {
+            display: block;
+            background: #303030;
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            border-radius: 50%;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            left: 5px;
         }
     </style>
 </head>

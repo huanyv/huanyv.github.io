@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计时器</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: rgba(242, 243, 245, 255)
+        }
+
+        #main {
+            position: relative;
+            width: 1000px;
+            margin: auto;
+            /* height: 100vh; */
+        }
+
+        #time {
+            position: relative;
+            width: 500px;
+            height: 120px;
+            top: 250px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            text-align: center;
+            font-size: 100px;
+            user-select: none;
+            color: #252525;
+        }
+
+        #btns {
+            position: relative;
+            top: 300px;
+            width: 240px;
+            height: 100px;
+            left: 0;
+            right: 0;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .btn {
+            width: 59px;
+            height: 59px;
+            border-radius: 30px;
+            border: black solid 0px;
+            background-color: white;
+            box-shadow: 0 5px 5px #F5F5F5;
+            cursor: pointer;
+            color: #252525;
+        }
+
+        #start {
+            background-color: rgba(10, 88, 246, 255);
+            box-shadow: 0 5px 5px #B9CCF4;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <div id="time">
+            <span id="hour">00</span>:<span id="min">00</span>:<span id="sec">00</span>
+        </div>
+        <div id="btns">
+            <button id="reset" class="btn">重置</button>
+            <button id="start" class="btn">开始</button>
+            <button id="bells" class="btn">提醒</button>
+        </div>
+    </div>
+    <script>
+        let hour = 0;
+        let min = 0;
+        let sec = 0;
+        let time = '';
+        let isStart = false;
+
+        min = 1;
+
+        refresh(hour, min, sec);
+
+        // 开始 暂停
+        let interval;
+        document.getElementById('start').onclick = function (ele) {
+            if (isStart == false) {
+                isStart = true;
+                ele.target.innerText = '暂停';
+                if (sec > 0 || min > 0 || hour > 0) {
+                    interval = setInterval(function () {
+                        sec--;
+                        if (sec < 0) {
+                            sec = 59
+                            min--;
+                            if (min < 0) {
+                                min = 59;
+                                hour--;
+                                if (hour < 0) {
+                                    window.alert('时间到')
+                                    clearInterval(interval)
+                                    hour = 0;
+                                    min = 0;
+                                    sec = 0;
+                                    refresh(0, 0, 0);
+                                }
+                            }
+                        }
+                        refresh(hour, min, sec);
+                    }, 1000)
+                }
+            } else {
+                // 暂停了
+                isStart = false;
+                ele.target.innerText = '开始';
+                clearInterval(interval);
+            }
+        }
+
+        document.getElementById('reset').onclick = function () {
+            clearInterval(interval)
+            hour = 0;
+            min = 0;
+            sec = 0;
+            refresh(0, 0, 0);
+        }
+
+        // 时间更新
+        function refresh(h, m, s) {
+            document.getElementById('hour').innerText = h < 10 ? '0' + h : h;
+            document.getElementById('min').innerText = m < 10 ? '0' + m : m;
+            document.getElementById('sec').innerText = s < 10 ? '0' + s : s;
+        }
+
+        document.getElementById('hour').addEventListener('wheel', function (e) {
+            if (e.deltaY < 0) {
+                if (hour < 99) {
+                    hour++;
+                }
+            } else {
+                if (hour > 0) {
+                    hour--;
+                }
+            }
+            refresh(hour, min, sec);
+        })
+    </script>
+</body>
+
+</html>

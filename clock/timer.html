@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>计时器</title>
+    <!-- <link rel="stylesheet" href="./layer/theme/default/layer.css"> -->
     <style>
         * {
             margin: 0;
@@ -35,6 +36,7 @@
             font-size: 100px;
             user-select: none;
             color: #252525;
+            font-family: LCD1;
         }
 
         #btns {
@@ -66,6 +68,11 @@
             box-shadow: 0 5px 5px #B9CCF4;
             color: white;
         }
+
+        @font-face {
+            font-family: LCD1;
+            src: url('./fonts/digital-7.woff2'), url('./fonts/digital-7.ttf');
+        }
     </style>
 </head>
 
@@ -79,15 +86,19 @@
             <button id="start" class="btn">开始</button>
             <button id="bells" class="btn">提醒</button>
         </div>
+        <audio src="./ringtone/Time_Capsule.ogg" style="display: none;" id="ringtong"></audio>
     </div>
+    <script src="./jquery/jquery-3.7.1.js"></script>
+    <script src="./layer/layer.js"></script>
     <script>
         let hour = 0;
         let min = 0;
         let sec = 0;
         let time = '';
         let isStart = false;
+        let timeout = 1;
 
-        min = 1;
+        sec = 1;
 
         refresh(hour, min, sec);
 
@@ -95,9 +106,9 @@
         let interval;
         document.getElementById('start').onclick = function (ele) {
             if (isStart == false) {
-                isStart = true;
-                ele.target.innerText = '暂停';
                 if (sec > 0 || min > 0 || hour > 0) {
+                    isStart = true;
+                    ele.target.innerText = '暂停';
                     interval = setInterval(function () {
                         sec--;
                         if (sec < 0) {
@@ -107,8 +118,11 @@
                                 min = 59;
                                 hour--;
                                 if (hour < 0) {
-                                    window.alert('时间到')
+                                    timeOut();
                                     clearInterval(interval)
+                                    isStart = false;
+                                    ele.target.innerText = '开始';
+                                    playRingtong();
                                     hour = 0;
                                     min = 0;
                                     sec = 0;
@@ -118,6 +132,8 @@
                         }
                         refresh(hour, min, sec);
                     }, 1000)
+                } else {
+                    layer.msg('请设置时间');
                 }
             } else {
                 // 暂停了
@@ -127,8 +143,38 @@
             }
         }
 
+        // 超时动作
+        function timeOut() {
+            let timeOutInterval;
+            let timeoutWindow = layer.open({
+                title: '时间到',
+                content: '<div style="font-size: 20px;text-align: center;">00:01</div>',
+                yes: function (index, layero) {
+                    timeout = 1;
+                    clearInterval(timeOutInterval);
+                    layer.close(index); //如果设定了yes回调，需进行手工关闭
+                }
+            });
+            timeOutInterval = setInterval(function () {
+                timeout++;
+                $('#layui-layer' + timeoutWindow + ' .layui-layer-content').html('<div style="font-size: 20px;text-align: center;">' + secondToMinute(timeout) + '</div>');
+            }, 1000)
+        }
+
+        function secondToMinute(sec) {
+            if (sec < 60) {
+                return '00:' + (sec < 10 ? '0' + sec : sec);
+            }
+            let min = Math.floor(sec / 60);
+            return (min < 10 ? '0' + min : min) + ':' + ((sec % 60) < 10 ? '0' + (sec % 60) : (sec % 60));
+        }
+
+
+        // 重置
         document.getElementById('reset').onclick = function () {
             clearInterval(interval)
+            document.getElementById('start').innerText = '开始';
+            isStart = false;
             hour = 0;
             min = 0;
             sec = 0;
@@ -143,17 +189,70 @@
         }
 
         document.getElementById('hour').addEventListener('wheel', function (e) {
-            if (e.deltaY < 0) {
-                if (hour < 99) {
-                    hour++;
+            if (isStart === false) {
+                if (e.deltaY < 0) {
+                    if (hour < 99) {
+                        hour++;
+                    }
+                } else {
+                    if (hour > 0) {
+                        hour--;
+                    }
                 }
-            } else {
-                if (hour > 0) {
-                    hour--;
-                }
+                refresh(hour, min, sec);
             }
-            refresh(hour, min, sec);
         })
+        document.getElementById('min').addEventListener('wheel', function (e) {
+            if (isStart === false) {
+                if (e.deltaY < 0) {
+                    if (min < 60) {
+                        min++;
+                        if (min >= 60) {
+                            min = 0;
+                        }
+                    }
+                } else {
+                    if (min >= 0) {
+                        min--;
+                        if (min < 0) {
+                            min = 59;
+                        }
+                    }
+                }
+                refresh(hour, min, sec);
+            }
+        })
+        document.getElementById('sec').addEventListener('wheel', function (e) {
+            if (isStart === false) {
+                if (e.deltaY < 0) {
+                    if (sec < 60) {
+                        sec++;
+                        if (sec >= 60) {
+                            sec = 0;
+                        }
+                    }
+                } else {
+                    if (sec >= 0) {
+                        sec--;
+                        if (sec < 0) {
+                            sec = 59;
+                        }
+                    }
+                }
+                refresh(hour, min, sec);
+            }
+        })
+
+        document.querySelector('#bells').addEventListener('click', function () {
+        })
+
+
+        function playRingtong() {
+            // let ringtong = new Audio('./ringtone/Time_Capsule.ogg');
+            // ringtong.play();
+            let audio = document.querySelector('#ringtong')
+            audio.play()
+        }
     </script>
 </body>
 

@@ -86,31 +86,11 @@
             <button id="start" class="btn">开始</button>
             <button id="bells" class="btn">提醒</button>
         </div>
-        <audio src="./ringtone/Ukulele.m4a" style="display: none;" id="ringtong"></audio>
+        <audio src="./ringtone/ukulele.m4a" style="display: none;" id="ringtong"></audio>
     </div>
     <script src="./jquery/jquery-3.7.1.js"></script>
     <script src="./layer/layer.js"></script>
-    <script id="worker" type="app/worker">
-        let interval;
-        self.onmessage = function (event) {
-            let msg = event.data;
-            if (msg === 'start') {
-                interval = setInterval(function () {
-                    self.postMessage('1');
-                }, 1000);
-            }
-            if (msg === 'stop') {
-                console.log('结束')
-                clearInterval(interval);
-            }
-        }
-    </script>
     <script>
-        let blob = new Blob([document.querySelector('#worker').textContent]);
-        let url = window.URL.createObjectURL(blob);
-        let worker1 = new Worker(url);
-        let worker2 = new Worker(url);
-
         let hour = 0;
         let min = 0;
         let sec = 0;
@@ -118,16 +98,40 @@
         let isStart = false;
         let timeout = 1;
 
+        sec = 1;
+
         refresh(hour, min, sec);
 
         // 开始 暂停
-        let startBtn = document.getElementById('start');
-        startBtn.onclick = function (ele) {
+        let interval;
+        document.getElementById('start').onclick = function (ele) {
             if (isStart == false) {
                 if (sec > 0 || min > 0 || hour > 0) {
                     isStart = true;
                     ele.target.innerText = '暂停';
-                    startWorkerInterval(worker1)
+                    interval = setInterval(function () {
+                        sec--;
+                        if (sec < 0) {
+                            sec = 59
+                            min--;
+                            if (min < 0) {
+                                min = 59;
+                                hour--;
+                                if (hour < 0) {
+                                    timeOut();
+                                    clearInterval(interval)
+                                    isStart = false;
+                                    ele.target.innerText = '开始';
+                                    playRingtong();
+                                    hour = 0;
+                                    min = 0;
+                                    sec = 0;
+                                    refresh(0, 0, 0);
+                                }
+                            }
+                        }
+                        refresh(hour, min, sec);
+                    }, 1000)
                 } else {
                     layer.msg('请设置时间');
                 }
@@ -135,55 +139,33 @@
                 // 暂停了
                 isStart = false;
                 ele.target.innerText = '开始';
-                stopWorkerInterval(worker1);
+                clearInterval(interval);
             }
-        }
-
-        worker1.onmessage = function () {
-            sec--;
-            if (sec < 0) {
-                sec = 59
-                min--;
-                if (min < 0) {
-                    min = 59;
-                    hour--;
-                    if (hour < 0) {
-                        timeOut(); // 超时动作
-                        stopWorkerInterval(worker1);
-                        isStart = false;
-                        startBtn.innerText = '开始';
-                        hour = 0;
-                        min = 0;
-                        sec = 0;
-                        refresh(0, 0, 0);
-                    }
-                }
-            }
-            refresh(hour, min, sec);
         }
 
         // 超时动作
         function timeOut() {
-            playRingtong(); // 播放铃声
+            let timeOutInterval;
             let timeoutWindow = layer.open({
                 title: '时间到',
                 content: '<div style="font-size: 20px;text-align: center;">00:01</div>',
                 yes: function (index, layero) {
-                    layer.close(index);
+                    // timeout = 1;
+                    // clearInterval(timeOutInterval);
+                    layer.close(index); 
                 },
                 end: function (index, layero) {
                     timeout = 1;
-                    stopWorkerInterval(worker2);
+                    clearInterval(timeOutInterval);
+                    layer.close(index)
                 }
             });
-            startWorkerInterval(worker2);
-            worker2.onmessage = function () {
+            timeOutInterval = setInterval(function () {
                 timeout++;
                 $('#layui-layer' + timeoutWindow + ' .layui-layer-content').html('<div style="font-size: 20px;text-align: center;">' + secondToMinute(timeout) + '</div>');
-            }
+            }, 1000)
         }
 
-        // 秒转分钟
         function secondToMinute(sec) {
             if (sec < 60) {
                 return '00:' + (sec < 10 ? '0' + sec : sec);
@@ -195,8 +177,8 @@
 
         // 重置
         document.getElementById('reset').onclick = function () {
-            stopWorkerInterval(worker1);
-            startBtn.innerText = '开始';
+            clearInterval(interval)
+            document.getElementById('start').innerText = '开始';
             isStart = false;
             hour = 0;
             min = 0;
@@ -211,7 +193,6 @@
             document.getElementById('sec').innerText = s < 10 ? '0' + s : s;
         }
 
-        // 时间调整
         document.getElementById('hour').addEventListener('wheel', function (e) {
             if (isStart === false) {
                 if (e.deltaY < 0) {
@@ -267,24 +248,15 @@
             }
         })
 
-        // 提醒
         document.querySelector('#bells').addEventListener('click', function () {
         })
 
-        // 播放铃声
+
         function playRingtong() {
             // let ringtong = new Audio('./ringtone/Time_Capsule.ogg');
             // ringtong.play();
             let audio = document.querySelector('#ringtong')
             audio.play()
-        }
-
-
-        function startWorkerInterval(w) {
-            w.postMessage('start');
-        }
-        function stopWorkerInterval(w) {
-            w.postMessage('stop');
         }
     </script>
 </body>
